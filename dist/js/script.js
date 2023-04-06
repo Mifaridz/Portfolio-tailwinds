@@ -56,3 +56,32 @@ if (
 } else {
   darkToggle.checked = false;
 }
+
+const btnClose = document.getElementById("btn-close");
+btnClose.addEventListener("click", function () {
+  myAlert.style.display = "none";
+});
+
+// send messange to spread sheets
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbwdYTraptsy-uI8uxdCqheIwu64DFyrxK88nGdwfz3M5KSziQnYhifCcPaiJ_aRxYxM/exec";
+const form = document.forms["portfolio-contact-form"];
+
+const btnSend = document.querySelector(".btn-send");
+const btnLoading = document.querySelector(".btn-loading");
+const myAlert = document.querySelector(".my-alert");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  btnLoading.classList.toggle("hidden");
+  btnSend.classList.toggle("hidden");
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then((response) => {
+      btnLoading.classList.toggle("hidden");
+      btnSend.classList.toggle("hidden");
+      myAlert.classList.toggle("hidden");
+      form.reset();
+      console.log("Success!", response);
+    })
+    .catch((error) => console.error("Error!", error.message));
+});
