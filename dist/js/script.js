@@ -57,6 +57,7 @@ if (
   darkToggle.checked = false;
 }
 
+// close alert after send messange
 const btnClose = document.getElementById("btn-close");
 btnClose.addEventListener("click", function () {
   myAlert.style.display = "none";
@@ -66,7 +67,6 @@ btnClose.addEventListener("click", function () {
 const scriptURL =
   "https://script.google.com/macros/s/AKfycbwdYTraptsy-uI8uxdCqheIwu64DFyrxK88nGdwfz3M5KSziQnYhifCcPaiJ_aRxYxM/exec";
 const form = document.forms["portfolio-contact-form"];
-
 const btnSend = document.querySelector(".btn-send");
 const btnLoading = document.querySelector(".btn-loading");
 const myAlert = document.querySelector(".my-alert");
